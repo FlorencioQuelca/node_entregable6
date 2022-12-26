@@ -1,6 +1,8 @@
-6 Proyecto Final Red Social
+## Proyecto Final Red Social
 El proyecto lo hemos estado desarrollando durante las clases, deberan entregar 2 enlaces, su repositorio y su app desplegada
- by: florencio quelca
+ 
+ 
+ # by: florencio quelca
 
 
 # Red Social API

@@ -3,7 +3,7 @@ const uuid = require('uuid')
 const Follows = require('../models/follows.models')
 const Users = require('../models/users.models')
 
-const followUser = async (follower, following) => {
+const followUser = async(follower, following) => {
     const data = await Follows.create({
         id: uuid.v4(),
         userId: follower,
@@ -12,10 +12,10 @@ const followUser = async (follower, following) => {
     return data
 }
 
-const findMyFollowers = async (userId) => {
+const findMyFollowers = async(userId) => {
     const data = await Follows.findAll({
         where: {
-            userId2 : userId
+            userId2: userId
         },
         include: {
             model: Users,
@@ -26,10 +26,10 @@ const findMyFollowers = async (userId) => {
     return data.map(item => item.followers)
 }
 
-const findMyFollowings = async (userId) => {
-     const data = await Follows.findAll({
+const findMyFollowings = async(userId) => {
+    const data = await Follows.findAll({
         where: {
-            userId : userId
+            userId: userId
         },
         include: {
             model: Users,
@@ -37,7 +37,7 @@ const findMyFollowings = async (userId) => {
             as: "following"
         }
     })
-    
+
     return data.map(item => item.following)
 }
 
