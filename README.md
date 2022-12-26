@@ -51,4 +51,11 @@ example ecommerce: /product/:id/add-to-cart
 - [ ] deletePost
 
 
+###deploy in RENDER
 
+npm install && npm start
+
+npm star
+
+configurar variables de entorno
+@dpj hasta el  /
