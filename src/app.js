@@ -1,8 +1,10 @@
 //? Dependencies
 const express = require('express')
 const cors = require('cors')
-
-//? Files
+const swaggerUI = require('swagger-ui-express')
+    //doc
+const swaggerDoc = require('./swagger.json')
+    //? Files
 const config = require('../config')
 const db = require('./utils/database')
 const initModels = require('./models/initModels')
@@ -14,16 +16,16 @@ const followRouter = require('./follows/follows.router')
 //? Initial Configs
 
 const app = express()
-//? Enable incoming JSON data
+    //? Enable incoming JSON data
 app.use(express.json())
-//? Enable CORS 
+    //? Enable CORS 
 app.use(cors())
 
 //? Authenticate DB
 db.authenticate()
     .then(() => console.log('Database Authenticated'))
     .catch((err) => console.log(err))
-//? Sync DataBase Models
+    //? Sync DataBase Models
 db.sync()
     .then(() => console.log('Database Synced'))
     .catch(err => console.log(err))
@@ -43,6 +45,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1', followRouter)
+app.use('/api/v1/docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/posts', postRouter)
